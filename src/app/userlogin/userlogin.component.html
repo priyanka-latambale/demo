@@ -1,0 +1,30 @@
+<html>
+<body>
+
+    <div class="container">
+      <h2>login form</h2>
+      <form [formGroup]="formdata" (ngSubmit) = "onClickSubmitData(formdata.value)">
+          <div class="row">
+        <div class="form-group">
+          <div class="col-sm-6">
+            
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" formControlName="email">
+        </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="form-group">
+            <div class="col-sm-6">
+          <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" formControlName="password">
+        </div>
+        </div>
+        </div>
+        
+        <button  [disabled]="!formdata.valid" type="submit" class="btn btn-success">Login</button>
+      </form>
+    </div>
+    
+    </body>
+    </html>

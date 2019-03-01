@@ -1,0 +1,51 @@
+<div class="container-fluid col-sm-9 col-sm-offset-1">
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+          <h3>Model Form Data</h3>
+          </div>
+      <div class="panel-body">
+          
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        
+          <th>Name</th>
+          <th>Mobile Number</th>
+          <th>ID Card Number</th>
+          <th>Role</th>
+          <th>Photo</th>
+          <th>Action</th>
+      
+        <th></th>
+                                
+      </tr>
+    </thead>
+
+    
+    <tbody>
+      
+      <tr *ngFor="let staffData of maintainanceData">
+        <td>{{staffData.mpFirstName}}</td>
+        <td>{{staffData.mpMobileNo}}</td>
+        <td>{{staffData.mpIdCardNo}}</td>
+        <td>{{staffData.mpRole}}</td>
+        <td><img src= {{staffData.mpPhoto}} style="width:128px;height:128px;"></td>
+        <td><button type="submit" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span></button></td>
+        <td><button  type="submit" class = "btn btn-sm btn-primary" (click)="newMessage(staffData.mid)">
+          <i class="fa fa-angle-right" aria-hidden="true">
+          </i>  View Details</button></td>
+                  <!-- <td><button type="submit" class="btn btn-primary" (click)="EditItem(i);"><span class="glyphicon glyphicon-pencil"></span></button></td> -->
+      </tr>
+    
+
+      
+
+      
+     
+      
+    </tbody>
+  
+  </table>
+</div>
+              </div>
+              </div>

@@ -1,0 +1,242 @@
+<html>
+  <head>
+
+    
+
+  </head>
+<body>
+    <div  class="container-fluid col-sm-9 col-sm-offset-1">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                     
+                <h3>Registration Form</h3>
+                
+                </div>
+            <div class="panel-body" style="background-color:#D3D3D3">
+                
+              <form [formGroup]="myForm" (ngSubmit)="myFunction();" > 
+                  <div formGroupName="name">
+                  <div class="row">
+                    <div class="form-group">
+                         <div class="col-sm-7">
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname"  formControlName="firstname" required>
+                             <!-- <div class="alert alert-danger"
+                            *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
+                            <p *ngIf="firstname.errors.pattern"> Enter Only Letters </p>
+                         <p *ngIf="firstname.errors.required"> First Name is required </p>
+                        
+                       </div> -->
+                       <div class="alert alert-danger"  *ngIf="myForm.get('name.firstname')?.touched && myForm.get('name.firstname')?.hasError('required')"> 
+                          The First name is required.  
+                         </div> 
+                         <p *ngIf="myForm.get('name.firstname')?.hasError('pattern')"> 
+                            Enters Only Letters</p>
+                          </div>
+                           </div>
+                           <br><br>
+                           </div>
+              <div class="row">
+                <div class=form-group>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname"  formControlName="lastname" required>
+                    
+                    <!-- <div class="alert alert-danger"
+                    *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
+                 <p *ngIf="lastname.errors.required">Last Name is required</p>
+                  <p *ngIf= "lastname.errors.pattern">Enter Only Letters</p>
+               </div> -->
+
+               <div class="alert alert-danger"  *ngIf="myForm.get('name.lastname')?.touched && myForm.get('name.lastname')?.hasError('required')"> 
+                   Last name is required.  
+                 </div> 
+                 <p *ngIf="myForm.get('name.lastname')?.hasError('pattern')"> 
+                    Enters Only Letters</p>
+                  </div>
+                </div>
+              </div><br>
+              </div>
+               <div class="row">
+                <div class="form-group" >
+                  <div class="col-sm-7">
+                      <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email"  formControlName="email" required> 
+                      <!-- <pre>Valid? {{ email.valid }}</pre>
+                      <pre>Invalid? {{ email.invalid }}</pre> -->
+                      <!-- <div class="alert alert-danger"
+                          *ngIf= "email.errors && (email.dirty || email.touched)">
+                       <p *ngIf= "email.errors.required">email is required</p>
+                       <p *ngIf= "email.errors.pattern">Please Enter Valid Email Id. for ex.example@gmail.com</p>
+                       
+                      </div> -->
+                      
+               <div class="alert alert-danger"  *ngIf="myForm.get('email')?.touched && myForm.get('email')?.hasError('required')"> 
+                 Email name is required.  
+                  </div>
+
+                <p *ngIf="myForm.get('email')?.hasError('pattern')"> 
+                  Please Enter Valid Email Id. for ex.example@gmail.com</p>
+                       
+                  
+                    </div>
+                </div><br><br>
+              </div>
+              
+        <div class="row">
+          <div class="form-group" >
+            <div class="col-sm-7">
+                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"   formControlName="password" required>
+                <!-- <div class="alert alert-danger"
+                *ngIf="password.errors && (password.dirty || password.touched)">
+             <p *ngIf="password.errors.required">Password is required</p>
+             <p *ngIf="password.errors.minlength">Password must be {{ password.errors.minlength.requiredLength }} characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </p>
+             
+            </div> -->
+
+            <div class="alert alert-danger"  *ngIf="myForm.get('password')?.touched && myForm.get('password')?.hasError('required')"> 
+                 password name is required.  
+                </div>
+               <p  *ngIf="myForm.get('password')?.hasError('minlength')"> 
+                  Password must be 8 characters long.
+                       
+               </p> 
+               
+            </div>
+          </div><br><br>
+        </div>      
+       
+        <div class="row">
+          <div class="from-group">
+            <div class="col-sm-7">
+              <select class="from-control" name="language" formControlName="language">
+                  <option value="">Please select a language</option>
+                  <option *ngFor="let lang of langs"
+                          [value]="lang">{{ lang }}
+                  </option>
+              </select>
+            </div>
+          </div><br><br>
+        </div>
+        <div>      
+        <button type="submit"  class="btn btn-success">{{ buttonValue }}</button> 
+         <!-- <button type="submit" class="btn btn-primary" [disabled]="IsForUpdate == false" (click)="UpdateItem()">Update</button><br> -->
+
+      </div>
+         
+  <div *ngIf="submitted">
+      <div class="alert alert-success" > 
+          <strong>{{ form }}</strong>
+        </div>
+      </div>  
+        <!-- <div *ngIf="submitted">
+        </div> -->
+              
+    
+
+  
+            
+          
+          
+              </form>
+              </div>
+
+              </div>
+
+              </div>
+
+
+
+
+              
+
+              
+</body>
+</html>
+
+ {{ myForm.value | json }}
+ {{ myForm.status | json }} <br><br>
+ {{ mydata | json }}
+
+ 
+ <!-- [ngClass]="{
+  'has-danger':( password.invalid && (password.dirty || password.touched)),
+  'has-success':(password.valid && (password.dirty || password.touched))
+}" 
+[ngClass]="{
+                  'has-danger':(email.invalid && email.dirty),
+                  'has-success':(email.valid && email.dirty)
+                }" -->
+
+
+
+                <div class="container-fluid col-sm-9 col-sm-offset-1">
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">
+                          <h3>Model Form Data</h3>
+                          </div>
+                      <div class="panel-body">
+                          
+                   <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                        <th>language</th>
+                        <th></th>
+                        <th></th>                        
+                      </tr>
+                    </thead>
+
+                    
+                    <tbody>
+                      <!-- 
+                        // this is for directly convert a object into an array
+                        
+                        <tr *ngFor="let data of mydata">
+                        <td>{{ data.value.name.firstname }}</td>
+                        <td>{{ data.value.name.lastname }}</td>
+                        <td>{{ data.value.email }}</td>
+                        <td>{{ data.value.language }}</td>
+                      </tr> -->
+                      <tr *ngFor="let data of mydata1;let i = index">
+                        <td>{{ data.name.firstname }}</td>
+                        <td>{{ data.name.lastname }}</td>
+                        <td>{{ data.email }}</td>
+                        <td>{{ data.language }}</td>
+                        <td><button type="submit" class="btn btn-danger" (click)="remove(index);"> <span class="glyphicon glyphicon-trash"></span></button></td>
+                        <td><button type="submit" class="btn btn-primary" (click)="EditItem(i);"><span class="glyphicon glyphicon-pencil"></span></button></td>
+                      </tr>
+                    
+
+                      
+
+                      
+                     
+                      
+                    </tbody>
+                  
+                  </table>
+                </div>
+                              </div>
+                              </div>
+
+
+
+
+                              <div id="myModal" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">Confirmation</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>{{ form }}</p>
+                                          
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                              </div>

@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="input-group col-sm-7">
+         <input type="text"  name="search" class="form-control" placeholder="Search" [(ngModel)]="query" (keypress)="doSomething()" autofocus> 
+         
+            
+              <div *ngIf="dataDisplay">
+               <!-- <p> {{ item.title }} </p>  -->
+               <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <!-- <th>UserId</th> -->
+                      <th>Id</th>
+                      <th>Title</th>
+                      <!-- <th>Body</th> -->
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr  *ngFor="let item of postArray | searchfilter:query; let i=index" >
+          
+                          <!-- <td>{{ item.userId }}</td> -->
+                          <td>{{ item.id }}</td>
+                          <td>{{ item.title }}</td>
+                          <!-- <td>{{ item.body }}</td> -->
+                          <td><button  type="submit" class = "btn btn-sm btn-primary" (click)="viewDetail(item.id)">
+                            <i class="fa fa-angle-right" aria-hidden="true">
+                            </i>  View Details</button></td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+             <!--  <p> {{ item.userId }} </p>
+              <p> {{ item.inside }} </p>
+              <p> {{ item.body }} </p> -->
+              <!-- <div class="input-group-btn">
+                  <button class="btn btn-default" (click)="viewDetail(postArray.id)" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </div>-->
+              </div>
+            
+         <!-- <tr *ngFor="let item of postArray | searchfilter: 'search' : txtFname.value">
+            <td>
+                {{item.title}}
+            </td>
+            <td>
+                {{item.body}}
+            </td>
+          </tr> -->
+         <!-- <ul>
+            <li *ngFor="let result of results">
+                <p class="artist-name">
+                    {{result.name}}</p>
+            </li>
+            <span  *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span>
+
+        </ul> -->
+        <!-- <div *ngFor = "let item of postArray | filter:title" >
+            <p>
+              {{ item.userId }}
+              {{ item.id }}
+              {{ item.title }}
+              {{ item.body }}
+            </p>
+          </div> -->
+
+      </div>
+
+    <h2>Hover Rows</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>UserId</th>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of postArray">
+          
+          <td>{{ post.userId }}</td>
+          <td>{{ post.id }}</td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.body }}</td>
+          <td><button  type="submit" class = "btn btn-sm btn-primary" (click)="viewDetail(post.id)">
+            <i class="fa fa-angle-right" aria-hidden="true">
+            </i>  View Details</button></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  <h1>  {{ x }} </h1>
+  </div>

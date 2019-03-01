@@ -1,0 +1,95 @@
+<html>
+<body>
+
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <div class="panel-body">
+      <div class="jumbotron"><h2>Registration</h2></div>
+      <form [formGroup]="signupform" (ngSubmit)="formSubmit(signupform.value)" >
+          <div class="row">
+        <div class="form-group">
+          <div class="col-sm-3">
+            
+          <!--<label for="firstname">First Name:</label>-->
+          <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname" formControlName="firstname">
+        </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3">
+          <!--<label for="lastname">Last Name:</label>-->
+          <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname" formControlName="lastname">
+        </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="col-sm-6">
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email" formControlName="email">
+                <div *ngIf="email?.invalid && email.touched"
+                class="alert alert-danger">
+ 
+        <div *ngIf = "email.errors?.required">
+            Email field can't be blank
+        </div>
+ 
+        <div *ngIf = "email.errors?.pattern">
+            The email id doesn't seem right
+        </div>
+ 
+     </div>
+              </div>
+            </div>
+            <br><br>
+          </div>
+          <div class="row">
+            <div formGroupName="password">
+              <div class="form-group">
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="password1" placeholder="Enter Password" name="password1" formControlName="password1">
+                    <div *ngIf="(password?.invalid && password.touched)"
+                    class="alert alert-danger">
+     
+        Password needs to be more than 8 characters
+                     </div>
+                  </div>
+
+                  <br><br>
+                </div>
+                
+              
+              <div class="row">
+                  <div class="form-group">
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="cpassword" formControlName="cpassword">
+                        <div *ngIf="(password?.invalid && password.touched)"
+                        class="alert alert-danger">
+     
+        Password needs to be more than 8 characters
+    </div>
+       
+
+                      </div>
+                    </div>
+                    </div>
+                    <br><br>
+                   </div>
+                  </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="remember" formControlName="terms" >Agree with terms and conditions</label>
+          <div *ngIf="(terms?.invalid && terms.touched)"
+          class="alert alert-danger">
+         
+        Please accept the Terms and conditions first.
+      </div>
+      
+      <br>
+        </div>
+        <button  [disabled]="!signupform.valid" type="submit" class="btn btn-success">Sign Up</button>
+      </form>
+    </div>
+    </div>
+    </div>
+    </body>
+    </html>
+<p> Form Value {{signupform.value | json }}</p>
+<p> Form Status {{signupform.status | json }} </p>
