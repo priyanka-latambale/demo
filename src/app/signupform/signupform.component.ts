@@ -26,7 +26,6 @@ export class SignupformComponent implements OnInit {
         password1: new FormControl('', [Validators.required, Validators.minLength(8)]),
         cpassword: new FormControl('', [Validators.required, Validators.minLength(8)])
       }),
-      // cpassword: new FormControl(),
       terms: new FormControl('', Validators.requiredTrue)
     });
   }

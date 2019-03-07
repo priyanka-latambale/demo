@@ -67,5 +67,8 @@ export class MainpageComponent implements OnInit {
     this.router.navigate(['/login']);
 
   }
+  open() {
+    // this.modalService.show();
+  }
 }
 
